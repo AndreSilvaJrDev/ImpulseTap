@@ -1,0 +1,31 @@
+name: Fix cart build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore cart checkout button
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path("src/app/carrinho/page.tsx")
+          text = path.read_text()
+          bad = '<button className="button primary full" onClick={()=>{if(items.some(item=>!item.target.trim())){setError("Confira o perfil ou link de cada item antes de continuar.");return}setError("");setCheckout(true)}}>Ir para pagamento</button>'
+          good = '<button className="button primary full" onClick={()=>setCheckout(true)}>Ir para pagamento</button>'
+          if bad in text:
+              path.write_text(text.replace(bad, good, 1))
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "Fix cart checkout build"
+          git push
