@@ -1,0 +1,3 @@
+import {Legal} from '@/components/legal';
+export const metadata={title:'Termos de uso'};
+export default function Page(){return <Legal title="Termos de uso"><h2>Uso da demonstração</h2><p>Você pode explorar o catálogo e simular um pedido. As confirmações exibidas não representam pagamentos, contratos de fornecimento ou entregas reais.</p><h2>Informações sobre os serviços</h2><p>Seguidores e interações não garantem alcance orgânico, vendas, clientes ou monetização. As condições, prazos e regras de reposição dependerão do serviço e deverão estar disponíveis antes da compra real.</p><h2>Conta e conteúdo</h2><p>Não solicitamos senhas. Utilize apenas perfis ou conteúdos que você está autorizado a informar. A ImpulseTap não é afiliada às plataformas listadas.</p></Legal>}

@@ -1,0 +1,71 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {PGlite} from '@electric-sql/pglite';
+import seed from '../../data/catalog-seed.json';
+import type {OrderDetail,DashboardData} from './operations';
+
+test('Admin operations: permissions, snapshots, idempotency, state transitions and private customer access',async()=>{
+ const db=new PGlite();
+ try{
+  await db.exec(`create role anon;create role authenticated;create role service_role;create schema auth;create table auth.users(id uuid primary key);create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;grant usage on schema auth to public;insert into auth.users values('00000000-0000-4000-8000-000000000001'),('00000000-0000-4000-8000-000000000002');`);
+  for(const name of ['202610020001_catalog_admin','202610020002_payments','202610020003_admin_operations','202610020004_custom_quantity_cart'])await db.exec(readFileSync(`supabase/migrations/${name}.sql`,'utf8'));
+  await db.exec(readFileSync('supabase/seed.sql','utf8'));
+  await db.exec(`insert into impulsetap.admin_users(user_id) values('00000000-0000-4000-8000-000000000001');set role anon;`);
+  await assert.rejects(db.query('select public.impulsetap_admin_dashboard()'));
+  await assert.rejects(db.query('select * from impulsetap.orders'));
+  await db.exec(`reset role;set role authenticated;set request.jwt.claim.sub='00000000-0000-4000-8000-000000000002';`);
+  await assert.rejects(db.query('select public.impulsetap_admin_identity()'));
+  await assert.rejects(db.query('select public.impulsetap_admin_orders()'));
+  const hash='a'.repeat(64), key='10000000-0000-4000-8000-000000000001';
+  const service=seed.services.find(s=>s.id==='svc-053')!;
+  const items=JSON.stringify([{package_id:service.packages[0].id,links:[{url:'https://www.twitch.tv/channel',quantity:1000}]}]);
+  const customer=JSON.stringify({name:'Teste local',email:'teste@example.com',terms:true});
+  const create=()=>db.query<{result:{id:string;public_id:string;total:number}}>('select public.impulsetap_create_order($1,$2,$3::jsonb,$4::jsonb) result',[key,hash,customer,items]);
+  await assert.rejects(create());
+  await db.exec('reset role;set role service_role;');
+  const created=(await create()).rows[0].result;
+  assert.equal(created.total,990);
+  assert.deepEqual((await create()).rows[0].result,created);
+  const publicOrder=async(secret:string)=> (await db.query<{result:unknown}>('select public.impulsetap_customer_order($1,$2) result',[created.public_id,secret])).rows[0].result;
+  assert.equal(await publicOrder('b'.repeat(64)),null);
+  const projected=JSON.stringify(await publicOrder(hash));
+  for(const forbidden of ['supplier','cost','customer_email','access_hash','request_key'])assert(!projected.includes(forbidden));
+  await db.exec(`reset role;set role authenticated;set request.jwt.claim.sub='00000000-0000-4000-8000-000000000001';`);
+  let order=(await db.query<{result:OrderDetail}>('select public.impulsetap_admin_order($1) result',[created.id])).rows[0].result;
+  assert.equal(order.items[0].supplier_service_id_snapshot,'110');
+  assert.equal(order.cost,142);assert.equal(order.gross_profit,null);
+  const action=async(kind:string,data:unknown={},version=order.version)=>{
+   const result=await db.query<{result:OrderDetail}>('select public.impulsetap_admin_order_action($1,$2,$3,$4::jsonb) result',[created.id,version,kind,JSON.stringify(data)]);
+   order=result.rows[0].result;return order;
+  };
+  await assert.rejects(action('status',{status:'completed',confirmation:created.public_id}));
+  await assert.rejects(action('submit',{item_id:order.items[0].id,supplier_name:'Manual',supplier_order_id:'ext-1'}));
+  await assert.rejects(action('manual_paid',{confirmation:'wrong',reason:'Conferido no extrato externo'}));
+  await action('manual_paid',{confirmation:created.public_id,reason:'Conferido no extrato externo'});
+  assert.equal(order.payment_status,'paid');assert.equal(order.fulfillment_status,'awaiting_processing');
+  await assert.rejects(action('manual_paid',{confirmation:created.public_id,reason:'Conferido no extrato externo'}));
+  await assert.rejects(action('note',{note:'stale'},1));
+  await action('note',{note:'Informação exclusivamente interna'});
+  await action('finance',{gateway_fee:50});assert.equal(order.gross_profit,798);
+  await action('submit',{item_id:order.items[0].id,supplier_name:'Fornecedor manual',supplier_order_id:'ext-1'});
+  assert.equal(order.fulfillment_status,'submitted_to_supplier');
+  await assert.rejects(action('submit',{item_id:order.items[0].id,supplier_name:'Fornecedor manual',supplier_order_id:'ext-1'}));
+  await assert.rejects(action('status',{status:'cancelled',confirmation:created.public_id}));
+  await action('status',{status:'in_progress'});
+  await action('status',{status:'completed',confirmation:created.public_id});
+  assert.equal(order.fulfillment_status,'completed');assert.equal(order.notes.length,1);assert(order.history.length>=6);
+  await action('refund',{amount:100,confirmation:created.public_id,reason:'Devolução confirmada no extrato'});
+  assert.equal(order.payment_status,'partially_refunded');assert.equal(order.gross_profit,698);
+  await assert.rejects(action('refund',{amount:1000,confirmation:created.public_id,reason:'Devolução confirmada no extrato'}));
+  const dash=(await db.query<{result:DashboardData}>('select public.impulsetap_admin_dashboard() result')).rows[0].result;
+  assert.equal(dash.today.revenue,890);assert.equal(dash.today.orders,1);assert.equal(dash.today.profit,698);assert.equal(dash.series.length,7);
+  // Editing today's catalog must not rewrite historical commercial snapshots.
+  const updated={...service,supplier_cost_per_1000:99,packages:service.packages.map(p=>({...p,price:99999}))};
+  await db.query('select public.impulsetap_update_service($1,1,$2::jsonb)',[service.id,JSON.stringify(updated)]);
+  order=(await db.query<{result:OrderDetail}>('select public.impulsetap_admin_order($1) result',[created.id])).rows[0].result;
+  assert.equal(order.total,990);assert.equal(order.cost,142);
+  await db.exec('reset role;set role service_role;');
+  assert(!JSON.stringify(await publicOrder(hash)).includes('Informação exclusivamente interna'));
+ }finally{await db.close()}
+});

@@ -1,0 +1,5 @@
+'use client';
+import {PlayCircle,HelpCircle} from 'lucide-react';
+import {useState} from 'react';
+import {PurchaseTutorial} from './purchase-tutorial';
+export function HomeVSL(){const[url]=useState(process.env.NEXT_PUBLIC_HOME_VSL_URL||'/media/impulsetap-vsl.mp4');const[help,setHelp]=useState(false);return <section className="container vsl-section" id="vsl"><div className="vsl-heading"><div><span className="section-kicker">Antes de começar</span><h2>Veja como funciona a ImpulseTap</h2><p>Escolha sua rede, monte seu pedido e acompanhe tudo de forma simples.</p></div></div><div className="vsl-player">{url?<video controls playsInline preload="metadata" src={url} aria-label="Vídeo de apresentação da ImpulseTap"/>:<div className="vsl-placeholder"><PlayCircle size={54}/><strong>Vídeo de apresentação em breve</strong></div>}</div><button className="button secondary tutorial-trigger" onClick={()=>setHelp(true)}><PlayCircle size={18}/>Tutorial de compra</button><small>Veja o passo a passo antes de fazer seu primeiro pedido.</small>{help&&<PurchaseTutorial source="home" onClose={()=>setHelp(false)}/>}</section>}

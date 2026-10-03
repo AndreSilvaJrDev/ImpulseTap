@@ -1,0 +1,5 @@
+import {z} from 'zod';
+import {requireAdmin,adminRpc,sameOrigin,jsonBody,apiFailure} from '@/lib/admin-server';
+import {serviceEditSchema} from '@/lib/admin-catalog';
+export async function GET(){try{const admin=await requireAdmin();return Response.json(await adminRpc('impulsetap_admin_catalog',{},admin.token),{headers:{'Cache-Control':'no-store'}})}catch(e){return apiFailure(e)}}
+export async function POST(request:Request){try{sameOrigin(request);const admin=await requireAdmin();const input=z.object({kind:z.enum(['network','service']),id:z.string().min(1).max(100),version:z.number().int().positive(),data:z.unknown()}).parse(await jsonBody(request));if(input.kind==='network')await adminRpc('impulsetap_update_network',{p_id:input.id,p_version:input.version,p_active:z.boolean().parse(input.data)},admin.token);else await adminRpc('impulsetap_update_service',{p_id:input.id,p_version:input.version,p_data:serviceEditSchema.parse(input.data)},admin.token);return Response.json({ok:true});}catch(e){return apiFailure(e)}}

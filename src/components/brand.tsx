@@ -1,0 +1,4 @@
+import { Instagram, Youtube, Facebook, Music2, Send, MessageCircle, AudioLines, Aperture, Twitch } from 'lucide-react';
+import type {NetworkId} from '@/lib/catalog';
+export function Logo(){return <span className="logo"><span className="logo-symbol" aria-hidden="true">ϟ</span><span>Impulse<span className="logo-tap">Tap</span></span></span>}
+export function NetworkIcon({id,small=false}:{id:NetworkId;small?:boolean}){const icons={instagram:Instagram,tiktok:Music2,youtube:Youtube,facebook:Facebook,telegram:Send,whatsapp:MessageCircle,spotify:AudioLines,kwai:Aperture,twitch:Twitch};const Icon=icons[id as keyof typeof icons];return <span className={`network-icon ${id} ${small?'small':''}`} aria-hidden="true">{id==='twitter'?<span className="x-brand">𝕏</span>:id==='google'?<b>G</b>:Icon?<Icon size={small?19:25} strokeWidth={id==='facebook'?2.5:1.8}/>:null}</span>}

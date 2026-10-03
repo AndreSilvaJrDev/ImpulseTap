@@ -1,0 +1,11 @@
+'use client';
+import {useState} from 'react';
+import Link from 'next/link';
+import {useRouter} from 'next/navigation';
+import {Eye,EyeOff,ShieldCheck,Zap} from 'lucide-react';
+export function AdminLogin({configured}:{configured:boolean}){
+ const router=useRouter();
+ const[show,setShow]=useState(false);const[busy,setBusy]=useState(false);const[error,setError]=useState('');
+ async function submit(e:React.FormEvent<HTMLFormElement>){e.preventDefault();setBusy(true);setError('');const data=new FormData(e.currentTarget);try{const res=await fetch('/api/admin/session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:data.get('email'),password:data.get('password')})});const result=await res.json();if(!res.ok)throw new Error(result.error);router.replace('/admin');router.refresh()}catch(e){setError(e instanceof Error?e.message:'Não foi possível entrar.');setBusy(false)}}
+ return <div className="ops-login"><div className="ops-login-intro"><Link href="/" className="ops-logo"><Zap/>Impulse<span>Tap</span></Link><h1>O controle da sua operação.</h1><p>Pedidos, pagamentos e entregas. Cada etapa registrada, cada decisão informada.</p><span><ShieldCheck/> Acesso exclusivo para administradores</span></div><section className="ops-login-card"><h2>Entrar no painel</h2><p>Use a conta autorizada pelo proprietário.</p>{!configured?<div className="ops-empty"><ShieldCheck size={32}/><h3>Conexão pendente</h3><p>Configure o Supabase e autorize seu usuário para habilitar o login. Nenhum dado administrativo está público.</p></div>:<form onSubmit={submit}><label>E-mail<input name="email" type="email" autoComplete="username" required maxLength={254}/></label><label>Senha<span className="ops-password"><input name="password" type={show?'text':'password'} autoComplete="current-password" required maxLength={256}/><button type="button" onClick={()=>setShow(v=>!v)} aria-label={show?'Esconder senha':'Mostrar senha'}>{show?<EyeOff size={19}/>:<Eye size={19}/>}</button></span></label>{error&&<p role="alert" className="error">{error}</p>}<button className="button primary full" disabled={busy}>{busy?'Verificando acesso…':'Entrar no painel'}</button><p className="ops-help">Sessão de até 1 hora. Não há cadastro público de administradores.</p></form>}<Link className="ops-back" href="/">Voltar ao site</Link></section></div>
+}

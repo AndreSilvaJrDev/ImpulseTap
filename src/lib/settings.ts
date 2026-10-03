@@ -1,0 +1,1 @@
+export const settings={demoMode:process.env.NEXT_PUBLIC_DEMO_MODE==='true',whatsapp:process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g,'')??'',enableOrderBumps:true,enableMultiLink:true,enableUpsells:false,enableSalesNotifications:false};

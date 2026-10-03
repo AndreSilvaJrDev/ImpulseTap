@@ -1,0 +1,3 @@
+import {Legal} from '@/components/legal';
+export const metadata={title:'Política de reembolso'};
+export default function Page(){return <Legal title="Política de reembolso"><h2>Nenhum pagamento nesta fase</h2><p>A demonstração não cobra valores nem gera PIX. Por isso, não existe uma transação real a reembolsar nesta versão.</p><h2>Política comercial em preparação</h2><p>Antes do lançamento, o proprietário deverá estabelecer e publicar o canal de solicitação, os procedimentos e prazos para cancelamento, entrega parcial, falha de entrega e reembolso, observando a legislação aplicável.</p><p>Não há promessa universal de reposição, prazo ou devolução neste documento-base.</p></Legal>}

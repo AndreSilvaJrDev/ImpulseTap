@@ -1,0 +1,5 @@
+import {cookies} from 'next/headers';
+import {z} from 'zod';
+import {ADMIN_COOKIE,adminRpc,authRequest,jsonBody,sameOrigin,apiFailure} from '@/lib/admin-server';
+export async function POST(request:Request){try{sameOrigin(request);const data=z.object({email:z.email().max(254),password:z.string().min(1).max(256)}).strict().parse(await jsonBody(request));const session=await authRequest('/auth/v1/token?grant_type=password',data);await adminRpc('impulsetap_admin_identity',{},session.access_token);(await cookies()).set(ADMIN_COOKIE,session.access_token,{httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'strict',path:'/',maxAge:Math.min(session.expires_in??3600,3600)});return Response.json({ok:true},{headers:{'Cache-Control':'no-store'}});}catch(e){return apiFailure(e)}}
+export async function DELETE(request:Request){try{sameOrigin(request);const jar=await cookies();const token=jar.get(ADMIN_COOKIE)?.value;jar.delete(ADMIN_COOKIE);if(token)await authRequest('/auth/v1/logout',{},token).catch(()=>{});return Response.json({ok:true});}catch(e){return apiFailure(e)}}

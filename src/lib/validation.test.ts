@@ -1,0 +1,12 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import seed from '../../data/catalog-seed.json';
+import {serviceSchema,networkSchema} from './catalog-schema';
+const services=seed.services.map(s=>serviceSchema.parse(s));const networks=seed.networks.map(n=>networkSchema.parse(n));const orderBumps=seed.orderBumps;
+import {validateTarget,validateLinks,customerSchema} from './validation';
+const profile=services.find(s=>s.id==='svc-002')!;
+const reels=services.find(s=>s.id==='svc-005')!;
+test('catalog seed contains all requested services and immutable integer cents',()=>{assert.equal(networks.length,11);assert.equal(services.length,57);assert.equal(new Set(services.map(s=>s.id)).size,57);for(const s of services)for(const p of s.packages){assert(Number.isSafeInteger(p.price)&&p.price>0);assert(p.quantity>0);}assert.deepEqual(profile.packages.map(p=>p.price),[4290,19990,37990]);assert.equal(services.find(s=>s.id==='svc-003')!.packages[0].price,449);for(const b of orderBumps)assert(services.some(s=>s.id===b.serviceId&&s.packages.some(p=>p.id===b.packageId)));});
+test('target validation rejects lookalike domains, scripts, wrong network and empty path',()=>{assert.equal(validateTarget('@andre',profile),null);assert.equal(validateTarget('https://www.instagram.com/andre',profile),null);for(const url of ['https://instagram.com.evil.test/andre','https://evilinstagram.com/andre','javascript:alert(1)','https://tiktok.com/@andre','https://instagram.com/','https://andre:secret@instagram.com/p/a','http://instagram.com/p/a'])assert(validateTarget(url,profile));assert(validateTarget('@andre',reels));});
+test('distribution enforces sum, integer positive amounts, unique links and capability',()=>{const links=[{url:'https://instagram.com/reel/a',quantity:4000},{url:'https://instagram.com/reel/b',quantity:6000}];assert.equal(validateLinks(links,reels,10000,true),null);assert(validateLinks(links,reels,5000,true));assert(validateLinks(links,profile,10000,true));assert(validateLinks([{...links[0],quantity:1.5},{...links[1],quantity:9998.5}],reels,10000,true));assert(validateLinks([links[0],{...links[0],quantity:6000}],reels,10000,true));});
+test('customer details require explicit terms and valid email',()=>{assert(customerSchema.safeParse({name:'Andre',email:'a@example.com',phone:'',terms:true}).success);assert(!customerSchema.safeParse({name:'Andre',email:'a@example.com',phone:'',terms:false}).success);assert(!customerSchema.safeParse({name:'Andre',email:'invalid',phone:'',terms:true}).success);});

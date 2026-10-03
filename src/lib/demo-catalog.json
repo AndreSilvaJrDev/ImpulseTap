@@ -1,0 +1,1621 @@
+{
+  "networks": [
+    {
+      "id": "instagram",
+      "name": "Instagram",
+      "description": "Perfis, posts e Reels",
+      "color": "#f447b7",
+      "hosts": [
+        "instagram.com"
+      ],
+      "active": true,
+      "version": 1
+    },
+    {
+      "id": "tiktok",
+      "name": "TikTok",
+      "description": "Dê espaço aos seus vídeos",
+      "color": "#22e7e1",
+      "hosts": [
+        "tiktok.com"
+      ],
+      "active": true,
+      "version": 1
+    },
+    {
+      "id": "youtube",
+      "name": "YouTube",
+      "description": "Seu canal em movimento",
+      "color": "#ff4848",
+      "hosts": [
+        "youtube.com",
+        "youtu.be"
+      ],
+      "active": true,
+      "version": 1
+    },
+    {
+      "id": "facebook",
+      "name": "Facebook",
+      "description": "Páginas e publicações",
+      "color": "#308aff",
+      "hosts": [
+        "facebook.com",
+        "fb.watch"
+      ],
+      "active": true,
+      "version": 1
+    },
+    {
+      "id": "kwai",
+      "name": "Kwai",
+      "description": "Vídeos que conectam",
+      "color": "#ff9a32",
+      "hosts": [
+        "kwai.com",
+        "kw.ai",
+        "kuaishou.com"
+      ],
+      "active": true,
+      "version": 1
+    },
+    {
+      "id": "twitter",
+      "name": "X / Twitter",
+      "description": "Participe da conversa",
+      "color": "#e0e7ff",
+      "hosts": [
+        "x.com",
+        "twitter.com"
+      ],
+      "active": true,
+      "version": 1
+    },
+    {
+      "id": "telegram",
+      "name": "Telegram",
+      "description": "Canais e comunidades",
+      "color": "#36baff",
+      "hosts": [
+        "t.me",
+        "telegram.me"
+      ],
+      "active": true,
+      "version": 1
+    },
+    {
+      "id": "twitch",
+      "name": "Twitch",
+      "description": "Seu canal em movimento",
+      "color": "#9146FF",
+      "hosts": [
+        "twitch.tv",
+        "clips.twitch.tv"
+      ],
+      "active": true,
+      "version": 1
+    },
+    {
+      "id": "whatsapp",
+      "name": "WhatsApp",
+      "description": "Canais e atualizações",
+      "color": "#38dd93",
+      "hosts": [
+        "whatsapp.com",
+        "whatsapp.net"
+      ],
+      "active": true,
+      "version": 1
+    },
+    {
+      "id": "google",
+      "name": "Google",
+      "description": "Reputação de verdade",
+      "color": "#4285f4",
+      "hosts": [
+        "google.com",
+        "google.com.br",
+        "g.page",
+        "maps.app.goo.gl"
+      ],
+      "active": true,
+      "version": 1
+    }
+  ],
+  "services": [
+    {
+      "id": "svc-001",
+      "network": "instagram",
+      "name": "Seguidores mundiais",
+      "category": "Seguidores",
+      "targetType": "profile",
+      "multiLink": false,
+      "unit": "seguidores",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-1-1",
+          "quantity": 1000,
+          "price": 2690
+        },
+        {
+          "id": "pkg-1-2",
+          "quantity": 5000,
+          "price": 12490
+        },
+        {
+          "id": "pkg-1-3",
+          "quantity": 10000,
+          "price": 23990
+        }
+      ],
+      "description": "Informe seu perfil ou canal público. Não precisamos da sua senha.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-002",
+      "network": "instagram",
+      "name": "Seguidores brasileiros",
+      "category": "Seguidores",
+      "targetType": "profile",
+      "multiLink": false,
+      "unit": "seguidores",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-2-1",
+          "quantity": 1000,
+          "price": 4290
+        },
+        {
+          "id": "pkg-2-2",
+          "quantity": 5000,
+          "price": 19990
+        },
+        {
+          "id": "pkg-2-3",
+          "quantity": 10000,
+          "price": 37990
+        }
+      ],
+      "description": "Informe seu perfil ou canal público. Não precisamos da sua senha.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-003",
+      "network": "instagram",
+      "name": "Curtidas mundiais",
+      "category": "Curtidas",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "curtidas",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-3-1",
+          "quantity": 1000,
+          "price": 449
+        },
+        {
+          "id": "pkg-3-2",
+          "quantity": 5000,
+          "price": 2190
+        },
+        {
+          "id": "pkg-3-3",
+          "quantity": 10000,
+          "price": 3990
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-004",
+      "network": "instagram",
+      "name": "Curtidas brasileiras",
+      "category": "Curtidas",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "curtidas",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-4-1",
+          "quantity": 1000,
+          "price": 990
+        },
+        {
+          "id": "pkg-4-2",
+          "quantity": 5000,
+          "price": 4690
+        },
+        {
+          "id": "pkg-4-3",
+          "quantity": 10000,
+          "price": 8990
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-005",
+      "network": "instagram",
+      "name": "Views de Reels",
+      "category": "Visualizações",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "visualizações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-5-1",
+          "quantity": 1000,
+          "price": 190
+        },
+        {
+          "id": "pkg-5-2",
+          "quantity": 5000,
+          "price": 790
+        },
+        {
+          "id": "pkg-5-3",
+          "quantity": 10000,
+          "price": 1490
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-006",
+      "network": "instagram",
+      "name": "Views de Stories",
+      "category": "Stories",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "stories",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-6-1",
+          "quantity": 1000,
+          "price": 190
+        },
+        {
+          "id": "pkg-6-2",
+          "quantity": 5000,
+          "price": 790
+        },
+        {
+          "id": "pkg-6-3",
+          "quantity": 10000,
+          "price": 1490
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-007",
+      "network": "instagram",
+      "name": "Salvos BR",
+      "category": "Salvos",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "salvos",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-7-1",
+          "quantity": 1000,
+          "price": 290
+        },
+        {
+          "id": "pkg-7-2",
+          "quantity": 5000,
+          "price": 1290
+        },
+        {
+          "id": "pkg-7-3",
+          "quantity": 10000,
+          "price": 2490
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-008",
+      "network": "instagram",
+      "name": "Compartilhamentos BR",
+      "category": "Compartilhamentos",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "compartilhamentos",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-8-1",
+          "quantity": 1000,
+          "price": 290
+        },
+        {
+          "id": "pkg-8-2",
+          "quantity": 5000,
+          "price": 1290
+        },
+        {
+          "id": "pkg-8-3",
+          "quantity": 10000,
+          "price": 2490
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-009",
+      "network": "tiktok",
+      "name": "Seguidores mundiais",
+      "category": "Seguidores",
+      "targetType": "profile",
+      "multiLink": false,
+      "unit": "seguidores",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-9-1",
+          "quantity": 1000,
+          "price": 2990
+        },
+        {
+          "id": "pkg-9-2",
+          "quantity": 5000,
+          "price": 13990
+        },
+        {
+          "id": "pkg-9-3",
+          "quantity": 10000,
+          "price": 26990
+        }
+      ],
+      "description": "Informe seu perfil ou canal público. Não precisamos da sua senha.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-010",
+      "network": "tiktok",
+      "name": "Seguidores brasileiros",
+      "category": "Seguidores",
+      "targetType": "profile",
+      "multiLink": false,
+      "unit": "seguidores",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-10-1",
+          "quantity": 1000,
+          "price": 4990
+        },
+        {
+          "id": "pkg-10-2",
+          "quantity": 5000,
+          "price": 22990
+        },
+        {
+          "id": "pkg-10-3",
+          "quantity": 10000,
+          "price": 43990
+        }
+      ],
+      "description": "Informe seu perfil ou canal público. Não precisamos da sua senha.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-011",
+      "network": "tiktok",
+      "name": "Curtidas mundiais",
+      "category": "Curtidas",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "curtidas",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-11-1",
+          "quantity": 1000,
+          "price": 490
+        },
+        {
+          "id": "pkg-11-2",
+          "quantity": 5000,
+          "price": 2290
+        },
+        {
+          "id": "pkg-11-3",
+          "quantity": 10000,
+          "price": 4290
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-012",
+      "network": "tiktok",
+      "name": "Curtidas brasileiras",
+      "category": "Curtidas",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "curtidas",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-12-1",
+          "quantity": 1000,
+          "price": 1190
+        },
+        {
+          "id": "pkg-12-2",
+          "quantity": 5000,
+          "price": 5490
+        },
+        {
+          "id": "pkg-12-3",
+          "quantity": 10000,
+          "price": 9990
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-013",
+      "network": "tiktok",
+      "name": "Visualizações",
+      "category": "Visualizações",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "visualizações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-13-1",
+          "quantity": 1000,
+          "price": 290
+        },
+        {
+          "id": "pkg-13-2",
+          "quantity": 5000,
+          "price": 1190
+        },
+        {
+          "id": "pkg-13-3",
+          "quantity": 10000,
+          "price": 2190
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-014",
+      "network": "tiktok",
+      "name": "Compartilhamentos",
+      "category": "Compartilhamentos",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "compartilhamentos",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-14-1",
+          "quantity": 1000,
+          "price": 490
+        },
+        {
+          "id": "pkg-14-2",
+          "quantity": 5000,
+          "price": 2290
+        },
+        {
+          "id": "pkg-14-3",
+          "quantity": 10000,
+          "price": 4290
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-015",
+      "network": "tiktok",
+      "name": "Salvos/Favoritos",
+      "category": "Salvos",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "salvos",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-15-1",
+          "quantity": 1000,
+          "price": 490
+        },
+        {
+          "id": "pkg-15-2",
+          "quantity": 5000,
+          "price": 2290
+        },
+        {
+          "id": "pkg-15-3",
+          "quantity": 10000,
+          "price": 4290
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-016",
+      "network": "tiktok",
+      "name": "Comentários",
+      "category": "Comentários",
+      "targetType": "video",
+      "multiLink": false,
+      "unit": "comentários",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-16-1",
+          "quantity": 1000,
+          "price": 6990
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-019",
+      "network": "youtube",
+      "name": "Visualizações",
+      "category": "Visualizações",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "visualizações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-19-1",
+          "quantity": 1000,
+          "price": 1490
+        },
+        {
+          "id": "pkg-19-2",
+          "quantity": 5000,
+          "price": 6490
+        },
+        {
+          "id": "pkg-19-3",
+          "quantity": 10000,
+          "price": 11990
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-020",
+      "network": "youtube",
+      "name": "Curtidas",
+      "category": "Curtidas",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "curtidas",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-20-1",
+          "quantity": 1000,
+          "price": 2490
+        },
+        {
+          "id": "pkg-20-2",
+          "quantity": 5000,
+          "price": 11490
+        },
+        {
+          "id": "pkg-20-3",
+          "quantity": 10000,
+          "price": 21990
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-023",
+      "network": "facebook",
+      "name": "Seguidores de página",
+      "category": "Seguidores",
+      "targetType": "profile",
+      "multiLink": false,
+      "unit": "seguidores",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-23-1",
+          "quantity": 1000,
+          "price": 3490
+        },
+        {
+          "id": "pkg-23-2",
+          "quantity": 5000,
+          "price": 15990
+        },
+        {
+          "id": "pkg-23-3",
+          "quantity": 10000,
+          "price": 29990
+        }
+      ],
+      "description": "Informe seu perfil ou canal público. Não precisamos da sua senha.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-024",
+      "network": "facebook",
+      "name": "Curtidas de página",
+      "category": "Curtidas de página",
+      "targetType": "profile",
+      "multiLink": false,
+      "unit": "curtidas de página",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-24-1",
+          "quantity": 1000,
+          "price": 3490
+        },
+        {
+          "id": "pkg-24-2",
+          "quantity": 5000,
+          "price": 15990
+        },
+        {
+          "id": "pkg-24-3",
+          "quantity": 10000,
+          "price": 29990
+        }
+      ],
+      "description": "Informe seu perfil ou canal público. Não precisamos da sua senha.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-025",
+      "network": "facebook",
+      "name": "Curtidas em publicação",
+      "category": "Curtidas",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "curtidas",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-25-1",
+          "quantity": 1000,
+          "price": 790
+        },
+        {
+          "id": "pkg-25-2",
+          "quantity": 5000,
+          "price": 3690
+        },
+        {
+          "id": "pkg-25-3",
+          "quantity": 10000,
+          "price": 6990
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-026",
+      "network": "facebook",
+      "name": "Reações em publicação",
+      "category": "Reações",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "reações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-26-1",
+          "quantity": 1000,
+          "price": 990
+        },
+        {
+          "id": "pkg-26-2",
+          "quantity": 5000,
+          "price": 4490
+        },
+        {
+          "id": "pkg-26-3",
+          "quantity": 10000,
+          "price": 8490
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-027",
+      "network": "facebook",
+      "name": "Visualizações de vídeo",
+      "category": "Visualizações",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "visualizações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-27-1",
+          "quantity": 1000,
+          "price": 490
+        },
+        {
+          "id": "pkg-27-2",
+          "quantity": 5000,
+          "price": 2190
+        },
+        {
+          "id": "pkg-27-3",
+          "quantity": 10000,
+          "price": 3990
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-028",
+      "network": "facebook",
+      "name": "Compartilhamentos",
+      "category": "Compartilhamentos",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "compartilhamentos",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-28-1",
+          "quantity": 1000,
+          "price": 790
+        },
+        {
+          "id": "pkg-28-2",
+          "quantity": 5000,
+          "price": 3690
+        },
+        {
+          "id": "pkg-28-3",
+          "quantity": 10000,
+          "price": 6990
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-029",
+      "network": "kwai",
+      "name": "Seguidores",
+      "category": "Seguidores",
+      "targetType": "profile",
+      "multiLink": false,
+      "unit": "seguidores",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-29-1",
+          "quantity": 1000,
+          "price": 2990
+        },
+        {
+          "id": "pkg-29-2",
+          "quantity": 5000,
+          "price": 13990
+        },
+        {
+          "id": "pkg-29-3",
+          "quantity": 10000,
+          "price": 26990
+        }
+      ],
+      "description": "Informe seu perfil ou canal público. Não precisamos da sua senha.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-030",
+      "network": "kwai",
+      "name": "Curtidas",
+      "category": "Curtidas",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "curtidas",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-30-1",
+          "quantity": 1000,
+          "price": 590
+        },
+        {
+          "id": "pkg-30-2",
+          "quantity": 5000,
+          "price": 2790
+        },
+        {
+          "id": "pkg-30-3",
+          "quantity": 10000,
+          "price": 5290
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-031",
+      "network": "kwai",
+      "name": "Visualizações",
+      "category": "Visualizações",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "visualizações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-31-1",
+          "quantity": 1000,
+          "price": 390
+        },
+        {
+          "id": "pkg-31-2",
+          "quantity": 5000,
+          "price": 1690
+        },
+        {
+          "id": "pkg-31-3",
+          "quantity": 10000,
+          "price": 2990
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-032",
+      "network": "kwai",
+      "name": "Compartilhamentos",
+      "category": "Compartilhamentos",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "compartilhamentos",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-32-1",
+          "quantity": 1000,
+          "price": 590
+        },
+        {
+          "id": "pkg-32-2",
+          "quantity": 5000,
+          "price": 2790
+        },
+        {
+          "id": "pkg-32-3",
+          "quantity": 10000,
+          "price": 5290
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-033",
+      "network": "twitter",
+      "name": "Seguidores",
+      "category": "Seguidores",
+      "targetType": "profile",
+      "multiLink": false,
+      "unit": "seguidores",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-33-1",
+          "quantity": 1000,
+          "price": 2490
+        },
+        {
+          "id": "pkg-33-2",
+          "quantity": 5000,
+          "price": 11490
+        },
+        {
+          "id": "pkg-33-3",
+          "quantity": 10000,
+          "price": 21990
+        }
+      ],
+      "description": "Informe seu perfil ou canal público. Não precisamos da sua senha.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-034",
+      "network": "twitter",
+      "name": "Curtidas",
+      "category": "Curtidas",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "curtidas",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-34-1",
+          "quantity": 1000,
+          "price": 390
+        },
+        {
+          "id": "pkg-34-2",
+          "quantity": 5000,
+          "price": 1790
+        },
+        {
+          "id": "pkg-34-3",
+          "quantity": 10000,
+          "price": 3290
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-035",
+      "network": "twitter",
+      "name": "Views",
+      "category": "Visualizações",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "visualizações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-35-1",
+          "quantity": 1000,
+          "price": 190
+        },
+        {
+          "id": "pkg-35-2",
+          "quantity": 5000,
+          "price": 790
+        },
+        {
+          "id": "pkg-35-3",
+          "quantity": 10000,
+          "price": 1490
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-036",
+      "network": "twitter",
+      "name": "Retweets",
+      "category": "Compartilhamentos",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "compartilhamentos",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-36-1",
+          "quantity": 1000,
+          "price": 990
+        },
+        {
+          "id": "pkg-36-2",
+          "quantity": 5000,
+          "price": 4490
+        },
+        {
+          "id": "pkg-36-3",
+          "quantity": 10000,
+          "price": 8490
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-037",
+      "network": "telegram",
+      "name": "Membros canal/grupo",
+      "category": "Membros",
+      "targetType": "channel",
+      "multiLink": false,
+      "unit": "membros",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-37-1",
+          "quantity": 1000,
+          "price": 1990
+        },
+        {
+          "id": "pkg-37-2",
+          "quantity": 5000,
+          "price": 8990
+        },
+        {
+          "id": "pkg-37-3",
+          "quantity": 10000,
+          "price": 16990
+        }
+      ],
+      "description": "Informe seu perfil ou canal público. Não precisamos da sua senha.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-038",
+      "network": "telegram",
+      "name": "Views em post",
+      "category": "Visualizações",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "visualizações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-38-1",
+          "quantity": 1000,
+          "price": 290
+        },
+        {
+          "id": "pkg-38-2",
+          "quantity": 5000,
+          "price": 1190
+        },
+        {
+          "id": "pkg-38-3",
+          "quantity": 10000,
+          "price": 2190
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-039",
+      "network": "telegram",
+      "name": "Reações",
+      "category": "Reações",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "reações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-39-1",
+          "quantity": 1000,
+          "price": 590
+        },
+        {
+          "id": "pkg-39-2",
+          "quantity": 5000,
+          "price": 2790
+        },
+        {
+          "id": "pkg-39-3",
+          "quantity": 10000,
+          "price": 5290
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-045",
+      "network": "whatsapp",
+      "name": "Seguidores de canal",
+      "category": "Seguidores",
+      "targetType": "channel",
+      "multiLink": false,
+      "unit": "seguidores",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-45-1",
+          "quantity": 1000,
+          "price": 3990
+        },
+        {
+          "id": "pkg-45-2",
+          "quantity": 5000,
+          "price": 18490
+        },
+        {
+          "id": "pkg-45-3",
+          "quantity": 10000,
+          "price": 34990
+        }
+      ],
+      "description": "Informe seu perfil ou canal público. Não precisamos da sua senha.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-046",
+      "network": "whatsapp",
+      "name": "Views de canal/status",
+      "category": "Visualizações",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "visualizações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-46-1",
+          "quantity": 1000,
+          "price": 990
+        },
+        {
+          "id": "pkg-46-2",
+          "quantity": 5000,
+          "price": 4490
+        },
+        {
+          "id": "pkg-46-3",
+          "quantity": 10000,
+          "price": 8490
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-047",
+      "network": "whatsapp",
+      "name": "Reações de canal",
+      "category": "Reações",
+      "targetType": "post",
+      "multiLink": true,
+      "unit": "reações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-47-1",
+          "quantity": 1000,
+          "price": 1490
+        },
+        {
+          "id": "pkg-47-2",
+          "quantity": 5000,
+          "price": 6990
+        },
+        {
+          "id": "pkg-47-3",
+          "quantity": 10000,
+          "price": 12990
+        }
+      ],
+      "description": "Informe o link público do conteúdo que receberá o serviço.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-048",
+      "network": "google",
+      "name": "Criação/otimização do Perfil da Empresa",
+      "category": "Perfil da Empresa",
+      "targetType": "business",
+      "multiLink": false,
+      "unit": "serviço",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-48-1",
+          "quantity": 1,
+          "price": 14990
+        }
+      ],
+      "description": "Serviço de gestão para o seu negócio, com avaliações autênticas.",
+      "active": true,
+      "min": 1,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-049",
+      "network": "google",
+      "name": "QR Code + página para avaliações reais",
+      "category": "Avaliações reais",
+      "targetType": "business",
+      "multiLink": false,
+      "unit": "serviço",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-49-1",
+          "quantity": 1,
+          "price": 4990
+        }
+      ],
+      "description": "Serviço de gestão para o seu negócio, com avaliações autênticas.",
+      "active": true,
+      "min": 1,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-050",
+      "network": "google",
+      "name": "Respostas para até 20 avaliações",
+      "category": "Respostas",
+      "targetType": "business",
+      "multiLink": false,
+      "unit": "mês",
+      "recurring": true,
+      "packages": [
+        {
+          "id": "pkg-50-1",
+          "quantity": 1,
+          "price": 9990
+        }
+      ],
+      "description": "Serviço de gestão para o seu negócio, com avaliações autênticas.",
+      "active": true,
+      "min": 1,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-051",
+      "network": "google",
+      "name": "Gestão mensal completa",
+      "category": "Gestão",
+      "targetType": "business",
+      "multiLink": false,
+      "unit": "mês",
+      "recurring": true,
+      "packages": [
+        {
+          "id": "pkg-51-1",
+          "quantity": 1,
+          "price": 24990
+        }
+      ],
+      "description": "Serviço de gestão para o seu negócio, com avaliações autênticas.",
+      "active": true,
+      "min": 1,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-052",
+      "network": "youtube",
+      "name": "Visualizações de Shorts",
+      "category": "Shorts",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "visualizações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-52-1",
+          "quantity": 1000,
+          "price": 1490
+        },
+        {
+          "id": "pkg-52-2",
+          "quantity": 5000,
+          "price": 6490
+        },
+        {
+          "id": "pkg-52-3",
+          "quantity": 10000,
+          "price": 11990
+        }
+      ],
+      "description": "Informe o link público do vídeo.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    },
+    {
+      "id": "svc-053",
+      "network": "twitch",
+      "name": "Seguidores Twitch",
+      "category": "Seguidores",
+      "targetType": "profile",
+      "multiLink": false,
+      "unit": "seguidores",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-53-1",
+          "quantity": 1000,
+          "price": 990
+        },
+        {
+          "id": "pkg-53-2",
+          "quantity": 5000,
+          "price": 3990,
+          "badge": "MAIS ESCOLHIDO"
+        },
+        {
+          "id": "pkg-53-3",
+          "quantity": 10000,
+          "price": 6990
+        }
+      ],
+      "description": "Informe o link público do canal. Nunca solicitamos sua senha.",
+      "active": true,
+      "min": 1000,
+      "max": 30000,
+      "delivery": "",
+      "refill": "30 dias",
+      "version": 1
+    },
+    {
+      "id": "svc-054",
+      "network": "twitch",
+      "name": "Visualizações em vídeos Twitch",
+      "category": "Visualizações",
+      "targetType": "video",
+      "multiLink": true,
+      "unit": "visualizações",
+      "recurring": false,
+      "packages": [
+        {
+          "id": "pkg-54-1",
+          "quantity": 1000,
+          "price": 2490
+        },
+        {
+          "id": "pkg-54-2",
+          "quantity": 5000,
+          "price": 10990
+        },
+        {
+          "id": "pkg-54-3",
+          "quantity": 10000,
+          "price": 19990
+        }
+      ],
+      "description": "Informe o link público do vídeo.",
+      "active": true,
+      "min": 1000,
+      "max": null,
+      "delivery": "",
+      "refill": "",
+      "version": 1
+    }
+  ],
+  "orderBumps": [
+    {
+      "id": "ig-likes",
+      "mainServiceIds": [
+        "svc-001",
+        "svc-002"
+      ],
+      "serviceId": "svc-004",
+      "packageId": "pkg-4-1",
+      "price": 790
+    }
+  ],
+  "source": "demo"
+}
