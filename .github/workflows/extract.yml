@@ -1,0 +1,27 @@
+name: Extract ImpulseTap source
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Extract project source
+        run: |
+          mkdir -p .impulsetap-source
+          unzip -o impulsetap-vercel.zip -d .impulsetap-source
+          cp -a .impulsetap-source/. .
+          rm -rf .impulsetap-source impulsetap-vercel.zip
+      - name: Commit source files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "Add ImpulseTap Next.js source"
+          git push
