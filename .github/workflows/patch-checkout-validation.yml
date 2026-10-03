@@ -1,0 +1,41 @@
+name: Patch checkout validation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Patch checkout guard
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path("src/components/storefront-v2.tsx")
+          text = path.read_text()
+          old = '<button className="button primary full" onClick={()=>{if(pricing)setCheckout(true)}}>Continuar para checkout</button>'
+          new = '<button className="button primary full" onClick={()=>{if(!pricing)return;const value=target.trim();if(!value){setToast("Informe o perfil ou link para continuar.");return}if(!/^https?:\/\//i.test(value)&&!value.startsWith("@")){setToast("Confira o link informado antes de continuar.");return}setCheckout(true)}}>Continuar para checkout</button>'
+          if new not in text:
+              if old not in text:
+                  raise SystemExit("checkout button source not found")
+              path.write_text(text.replace(old, new, 1))
+          cart = Path("src/app/carrinho/page.tsx")
+          text = cart.read_text()
+          old = '<button className="button primary full" onClick={()=>setCheckout(true)}>Ir para pagamento</button>'
+          new = '<button className="button primary full" onClick={()=>{if(items.some(item=>!item.target.trim())){setError("Confira o perfil ou link de cada item antes de continuar.");return}setError("");setCheckout(true)}}>Ir para pagamento</button>'
+          if new not in text and old in text:
+              text = text.replace(old, new, 1)
+              cart.write_text(text)
+          PY
+      - name: Commit patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "Require target before checkout"
+          git push
